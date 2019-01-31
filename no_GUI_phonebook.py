@@ -17,7 +17,7 @@ conn.commit()
 
 
 def printMenu():
-	print (28 * '=')
+	print (28 * "=")
 	print ("==Welcome to the Phonebook==")
 	print (28 * "=")
 	print ("1. Look up a phone number.")
