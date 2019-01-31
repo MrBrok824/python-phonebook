@@ -4,10 +4,10 @@
 from tkinter import *
 import sqlite3
 
-conn = sqlite3.connect('phonebook.db')   #establish connection
+conn = sqlite3.connect('phonebook.db')                           #establish connection
 c = conn.cursor() 						 #create cursor 
 
-c.execute(               				 #create a table if one does not exist
+c.execute(               				         #create a table if one does not exist
 	'''CREATE TABLE IF NOT EXISTS PHONEBOOK
 		( PHONE INT PRIMARY KEY, \
 		  NAME TEXT \
