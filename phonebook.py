@@ -68,20 +68,20 @@ def listEntry(frame):
 	b = Button(frame, text="Look up", command=lambda: lookupEntry(phone.get()))
 	b.pack()
 	
-
+# list all entries in database
 def listEntries(frame):
 	clearFrame(frame)
 	c.execute('SELECT * FROM Phonebook')
 	allData = c.fetchall()
 	print(allData)
 
-
+# insert entry into database
 def addEntryProcess(name, phone):
 	c.execute("INSERT INTO PHONEBOOK (PHONE, NAME) VALUES(" + phone + ", '" + name + "')");
 	conn.commit()
 	print ("\n(%s,%s) has been added to the phonebook!\n" %(phone, name))
     
-
+# lookup an entry
 def lookupEntry(phone):
 	c.execute(' SELECT * FROM Phonebook WHERE phone = ' + phone)
 	lookUp = c.fetchall()
