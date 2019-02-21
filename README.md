@@ -13,3 +13,16 @@ Phonebook app created using Python 3, the tkinter library, and SQLite.
 
 
 Note: no_GUI_phonebook.py is the same application however it features no tkinter GUI.
+
+### Using
+```
+python3 phonebook.py
+```
+or
+```
+python3 no_gui_phonebook.py
+```
+
+### Authors
+
+* **Sean Reid** - [Sean Reid](https://github.com/seankreid)
