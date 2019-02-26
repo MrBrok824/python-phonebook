@@ -23,6 +23,3 @@ or
 python3 no_gui_phonebook.py
 ```
 
-### Authors
-
-* **Sean Reid** - [Sean Reid](https://github.com/seankreid)
