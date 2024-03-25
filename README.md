@@ -20,7 +20,7 @@ Phonebook app created using Python 3, the tkinter library, and SQLite.
 - In the GUI version program displays a menu and gives you the following options:
 
   * Add an entry
-  * List Entries
+  * List all entries
   * Edit Entry
   * Quit
 
