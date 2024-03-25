@@ -40,10 +40,10 @@ pip install tkinter
 ```
 ### Using
 ```
-python3 phonebook.py
+python3 no_gui_phonebook.py
 ```
 or
 ```
-python3 no_gui_phonebook.py
+python3 phonebook.py
 ```
 
