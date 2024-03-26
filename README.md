@@ -40,6 +40,12 @@ pip install tkinter
 ```
 ### Using
 ```
+git clone https://github.com/MrBrok824/python-phonebook.git
+```
+```
+cd python-phonebook
+```
+```
 python3 no_gui_phonebook.py
 ```
 or
