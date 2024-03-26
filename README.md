@@ -22,6 +22,7 @@ Phonebook app created using Python 3, the tkinter library, and SQLite.
   * Add an entry
   * List all entries
   * Edit Entry
+  * Delete Entry
   * Quit
 
 - When you add an entry it gets added to a SQLite database   
