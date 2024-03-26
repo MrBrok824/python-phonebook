@@ -30,6 +30,9 @@ def main():
     edit_entry_button = Button(tk, text="Edit Entry", command=lambda: editEntry(), bg="purple", fg="white")
     edit_entry_button.pack(pady=5)
 
+    delete_entry_button = Button(tk, text="Delete Entry", command=lambda: deleteEntry(), bg="blue", fg="white")
+    delete_entry_button.pack(pady=5)
+
     close_button = Button(tk, text="Quit", command=quit_app, bg="red", fg="white")
     close_button.pack(pady=5)
 
@@ -109,18 +112,58 @@ def lookupForEdit(name):
         print(f"No entry found with the name '{name}'.")
 
 def updateEntry(phone, new_name, window):
-    c.execute("UPDATE PHONEBOOK SET NAME = ? WHERE PHONE = ?", (new_name, phone))
-    conn.commit()
-    window.destroy()
-    print(f"Name updated to: Name: {new_name}, Number: {phone}")
+    try:
+        c.execute("UPDATE Phonebook SET name = ? WHERE phone = ?", (new_name, phone))
+        conn.commit()
+        window.destroy()
+        print(f"Name updated to '{new_name}' for phone number '{phone}'.")
+    except:
+        print("Error occurred while updating entry.")
 
 def updateNumber(name, new_number, window):
-    c.execute("UPDATE PHONEBOOK SET PHONE = ? WHERE NAME = ?", (new_number, name))
-    conn.commit()
-    window.destroy()
-    print(f"Number updated to: Name: {name}, Number: {new_number}")
+    c.execute('SELECT * FROM Phonebook WHERE name = ?', (name,))
+    lookUp = c.fetchone()
+    if lookUp:
+        phone, name = lookUp
+        try:
+            c.execute("UPDATE Phonebook SET phone = ? WHERE name = ?", (new_number, name))
+            conn.commit()
+            window.destroy()
+            print(f"Phone number updated to '{new_number}' for name '{name}'.")
+        except:
+            print("Error occurred while updating phone number.")
+    else:
+        print(f"No entry found with the name '{name}'.")
+
+def deleteEntry():
+    top = Toplevel(tk)
+    top.title("Delete Entry")
+    top.configure(bg='sky blue')
+
+    label = Label(top, text="Enter a name to delete: ", bg='sky blue', fg='black')
+    label.pack()
+    name = Entry(top)
+    name.pack()
+    b = Button(top, text="Delete", command=lambda: deleteEntryProcess(name.get(), top))
+    b.pack()
+
+def deleteEntryProcess(name, window):
+    c.execute('SELECT * FROM Phonebook WHERE name = ?', (name,))
+    lookUp = c.fetchone()
+    if lookUp:
+        phone, name = lookUp
+        try:
+            c.execute("DELETE FROM Phonebook WHERE phone = ?", (phone,))
+            conn.commit()
+            window.destroy()
+            print(f"Entry (Name: {name}, Number: {phone}) has been deleted from the phonebook.")
+        except:
+            print("Error occurred while deleting entry.")
+    else:
+        print(f"No entry found with the name '{name}'.")
 
 if __name__ == "__main__":
     main()
+
 
 
