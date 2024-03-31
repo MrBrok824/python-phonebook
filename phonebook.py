@@ -14,26 +14,26 @@ conn.commit()
 tk = Tk()
 tk.title("Phonebook Application")
 tk.configure(bg='sky blue')
-tk.geometry("334x260")
+tk.geometry("340x330")
 
 def main():
     
     label = Label(tk, text="Select an option:", bg='sky blue', fg='black')
     label.pack(pady=5)
 
-    add_entry_button = Button(tk, text="Add Entry", command=lambda: addEntry(), bg="green", fg="white")
+    add_entry_button = Button(tk, text="Add Entry", command=lambda: addEntry(), bg="green", fg="white", width=15, height=2)
     add_entry_button.pack(pady=5)
 
-    list_entries_button = Button(tk, text="List Entries", command=lambda: listEntries(), bg="orange", fg="white")
+    list_entries_button = Button(tk, text="List Entries", command=lambda: listEntries(), bg="orange", fg="white", width=15, height=2)
     list_entries_button.pack(pady=5)
 
-    edit_entry_button = Button(tk, text="Edit Entry", command=lambda: editEntry(), bg="purple", fg="white")
+    edit_entry_button = Button(tk, text="Edit Entry", command=lambda: editEntry(), bg="purple", fg="white", width=15, height=2)
     edit_entry_button.pack(pady=5)
 
-    delete_entry_button = Button(tk, text="Delete Entry", command=lambda: deleteEntry(), bg="blue", fg="white")
+    delete_entry_button = Button(tk, text="Delete Entry", command=lambda: deleteEntry(), bg="blue", fg="white", width=15, height=2)
     delete_entry_button.pack(pady=5)
 
-    close_button = Button(tk, text="Quit", command=quit_app, bg="red", fg="white")
+    close_button = Button(tk, text="Quit", command=quit_app, bg="red", fg="white", width=15, height=2)
     close_button.pack(pady=5)
 
     tk.mainloop()
@@ -74,9 +74,12 @@ def listEntries():
     allData = c.fetchall()
     if allData:
         print("All entries:")
+        print()
         for entry in allData:
             phone, name = entry
-            print(f"Name: {name}, Number: {phone}")
+            print()
+            print(f"Name: {name}")
+            print(f"Phone: {phone}")
     else:
         print("Phonebook is empty.")
 
@@ -100,13 +103,13 @@ def lookupForEdit(name):
         top = Toplevel(tk)
         top.title("Edit Entry")
         top.configure(bg='sky blue')
-        label = Label(top, text=f"Current Name: {name}, Number: {phone}", bg='sky blue', fg='black')
+        label = Label(top, text=f"Current Name: {name}, Phone: {phone}", bg='sky blue', fg='black')
         label.pack()
         new_name = Entry(top)
         new_name.pack()
-        b = Button(top, text="Update Name", command=lambda: updateEntry(phone, new_name.get(), top))
+        b = Button(top, text="Edit Name", command=lambda: updateEntry(phone, new_name.get(), top))
         b.pack()
-        b = Button(top, text="Update Number", command=lambda: updateNumber(name, new_name.get(), top))
+        b = Button(top, text="Edit Phone", command=lambda: updateNumber(name, new_name.get(), top))
         b.pack()
     else:
         print(f"No entry found with the name '{name}'.")
