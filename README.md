@@ -29,19 +29,7 @@ Phonebook app created using Python 3, the tkinter library, and SQLite.
 - When you view all entries it gets them from a SQLite database
 - Editing of entered SQLite database
 - Delete an existing entry from SQLite database
-  
-Install dependencies from pip:
-
-```
-pip install sqlite3
-```
-and for GUI vesion:
-
-```
-pip install tkinter
-```
-### Using
-```
+```  
 git clone https://github.com/MrBrok824/python-phonebook.git
 ```
 ```
