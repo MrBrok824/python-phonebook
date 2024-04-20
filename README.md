@@ -43,3 +43,4 @@ or
 python3 phonebook.py
 ```
 
+[![Python Sticker](https://files.paluba.info/brok/slike/2024-04-20_220913.jpg)](https://www.python.org)
